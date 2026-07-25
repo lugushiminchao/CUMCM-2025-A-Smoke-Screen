@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 """问题1：解析/高精度计算有效遮蔽时长，并输出关键几何量"""
 import math
+from pathlib import Path
+
 import numpy as np
 
 g = 9.8
@@ -165,10 +167,11 @@ def main():
         ok = (0 <= s <= 1) and (d <= R)
         p(f"t={t:.4f} d={d:.6f} s={s:.6f} shielded={ok}")
 
-    out = r"C:\数模\2025国赛A题\q1_result.txt"
+    repo_root = Path(__file__).resolve().parent.parent
+    out = repo_root / "q1_result.txt"
     with open(out, "w", encoding="utf-8") as f:
         f.write("\n".join(lines))
-    p(f"\n已写入 {out}")
+    p(f"\n已写入 {out.relative_to(repo_root).as_posix()}")
 
 
 if __name__ == "__main__":

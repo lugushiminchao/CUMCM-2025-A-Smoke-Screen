@@ -38,6 +38,10 @@ from common.smoke_geom import (  # noqa: E402
 )
 
 OUT = ROOT / "结果"
+
+def display_path(path):
+    return Path(path).resolve().relative_to(ROOT.parent.resolve()).as_posix()
+
 OUT.mkdir(exist_ok=True)
 ATTACH = ROOT.parent / "附件"
 
@@ -433,7 +437,7 @@ def main():
 
     xlsx_path = OUT / "result1.xlsx"
     write_result1_xlsx(info, per, total, xlsx_path)
-    print(f"已写 {xlsx_path} 与 附件/result1.xlsx")
+    print(f"已写 {display_path(xlsx_path)} 与 附件/result1.xlsx")
     print(f"总耗时 {elapsed:.1f}s")
 
 

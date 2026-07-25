@@ -30,9 +30,9 @@
       q2_result.csv
       q2_result.json
 
-运行:
-  python C:/数模/2025国赛A题/问题2/q2_optimize.py
-  matlab -batch "cd('C:/数模/2025国赛A题/问题2'); q2_quick_check"
+运行（在仓库根目录）:
+  python ".\问题2\q2_optimize.py"
+  matlab -sd ".\问题2" -batch "q2_quick_check"
 
 问题2 决策变量: [航向角 theta, 速度 v, 投放时刻 t_drop, 引信延时 tau]
 判据: 云团中心到导弹-真目标中心视线段距离 ≤ 10 m（与问题1一致）

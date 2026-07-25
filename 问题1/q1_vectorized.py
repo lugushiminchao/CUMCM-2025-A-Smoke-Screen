@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 """问题1：向量化高精度计算有效遮蔽时长"""
 import math
+from pathlib import Path
+
 import numpy as np
 
 g = 9.8
@@ -184,10 +186,11 @@ def main():
         ok = (d[0] <= R) and (0 <= s[0] <= 1)
         p(f"t={t:.5f} d={d[0]:.6f} s={s[0]:.6f} ok={ok}")
 
-    path = r"C:\数模\2025国赛A题\q1_result.txt"
+    repo_root = Path(__file__).resolve().parent.parent
+    path = repo_root / "q1_result.txt"
     with open(path, "w", encoding="utf-8") as f:
         f.write("\n".join(out_lines))
-    p(f"\n结果已保存: {path}")
+    p(f"\n结果已保存: {path.relative_to(repo_root).as_posix()}")
 
 
 if __name__ == "__main__":

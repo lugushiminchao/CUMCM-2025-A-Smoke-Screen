@@ -6,15 +6,35 @@ R2026a 在 -batch 退出时常 Access Violation，但计算往往已完成。
 """
 from __future__ import annotations
 
+import os
 import re
+import shutil
 import subprocess
 import sys
 import time
 from pathlib import Path
 
-MATLAB = r"C:\Program Files\MATLAB\R2026a\bin\matlab.exe"
-Q2 = Path(r"C:\数模\2025国赛A题\问题2")
+Q2 = Path(__file__).resolve().parent
 OUT = Q2 / "结果"
+
+
+def find_matlab() -> str:
+    configured = os.environ.get("MATLAB_EXE") or os.environ.get("MATLAB_EXECUTABLE")
+    if configured:
+        executable = Path(configured).expanduser()
+        if not executable.is_file():
+            raise FileNotFoundError(f"MATLAB_EXE is not a file: {executable}")
+        return str(executable)
+    found = shutil.which("matlab")
+    if found:
+        return found
+    raise FileNotFoundError(
+        "MATLAB executable not found. Set MATLAB_EXE to the full MATLAB "
+        "executable path, or add matlab to PATH."
+    )
+
+
+MATLAB = find_matlab()
 CHUNK = 200  # 每段粗搜点数
 REFINE_CHUNK = 2
 TOKEN_FILE = OUT / "q2_last_token.txt"
@@ -27,13 +47,14 @@ def run_matlab(expr: str, timeout: int = 300) -> str:
         "-nodesktop",
         "-nosplash",
         "-batch",
-        f"cd('{Q2.as_posix()}'); {expr}",
+        expr,
     ]
     print(f"\n>>> {expr}", flush=True)
     t0 = time.perf_counter()
     try:
         r = subprocess.run(
             cmd,
+            cwd=str(Q2),
             capture_output=True,
             text=True,
             encoding="utf-8",

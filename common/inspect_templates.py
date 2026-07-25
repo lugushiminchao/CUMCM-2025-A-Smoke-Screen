@@ -2,7 +2,8 @@
 from openpyxl import load_workbook
 from pathlib import Path
 
-base = Path(r"C:\数模\2025国赛A题\附件")
+REPO_ROOT = Path(__file__).resolve().parent.parent
+base = REPO_ROOT / "附件"
 for name in ["result1.xlsx", "result2.xlsx", "result3.xlsx"]:
     p = base / name
     wb = load_workbook(p)

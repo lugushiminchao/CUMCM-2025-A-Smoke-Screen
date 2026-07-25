@@ -19,7 +19,9 @@ from pathlib import Path
 import numpy as np
 
 # 直接复用问题2 的“第一问模型”
-Q2_DIR = Path(r"C:\数模\2025国赛A题\问题2")
+ROOT3 = Path(__file__).resolve().parent
+REPO_ROOT = ROOT3.parent
+Q2_DIR = REPO_ROOT / "问题2"
 sys.path.insert(0, str(Q2_DIR))
 from q2_optimize import (  # noqa: E402
     FY0,
@@ -37,7 +39,6 @@ from q2_optimize import (  # noqa: E402
     shield_duration,
 )
 
-ROOT3 = Path(r"C:\数模\2025国赛A题\问题3")
 OUT = ROOT3 / "结果"
 RESULT_JSON = OUT / "q3_result.json"
 RESULT_XLSX = OUT / "result1.xlsx"
@@ -460,7 +461,7 @@ def main():
     OUT.mkdir(exist_ok=True)
     with open(LOG, "w", encoding="utf-8") as f:
         f.write("\n".join(lines) + "\n")
-    log(f"\n日志已写: {LOG}")
+    log(f"\n日志已写: {LOG.relative_to(REPO_ROOT).as_posix()}")
     return n_fail
 
 

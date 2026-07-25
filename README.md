@@ -196,14 +196,14 @@ FY5   有效    —     有效
 
 ## 6. 运行环境与复现
 
-- Python 3.10：`C:\数模\env\Python310\python.exe`
+- Python 3.10（仓库根目录下使用 `python` 或 `py -3.10`）
 - 依赖：`numpy`, `torch`（CUDA）, `openpyxl`
 - GPU：NVIDIA GeForce RTX 2080 Ti（亦可 CPU，较慢）
 
-示例：
+在仓库根目录运行示例：
 
 ```bat
-C:\数模\env\Python310\python.exe -u 问题5\q5_cylinder_optimize.py
+python -u ".\问题5\q5_cylinder_optimize.py"
 ```
 
 各问优化脚本位于对应 `问题k/` 目录；几何与判据统一在 `common/smoke_geom.py`。
@@ -299,10 +299,10 @@ $$
 3. **策略一致性**：两者最优航向/速度/投放时刻往往接近；可用点模型快速探路，再用圆柱严格判据终算与稳健性校验。
 4. **论文建议**：主文采用圆柱严格全遮蔽（更贴合“遮蔽真目标”）；点模型可作为灵敏度分析附录。
 
-复现：
+复现（在仓库根目录）：
 
 ```bat
-C:\数模\env\Python310\python.exe -u run_point_vs_cylinder.py
+python -u ".\run_point_vs_cylinder.py"
 ```
 
 ### 9.4 与公开优秀/开源解对比

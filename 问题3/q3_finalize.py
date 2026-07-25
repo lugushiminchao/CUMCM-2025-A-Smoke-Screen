@@ -2,10 +2,12 @@
 """保存 stage3/polish 中出现过的最优种子，并用一致高精度重算。"""
 import json
 import sys
+from pathlib import Path
 
 import numpy as np
 
-sys.path.insert(0, r"C:\数模\2025国赛A题\问题3")
+THIS_DIR = Path(__file__).resolve().parent
+sys.path.insert(0, str(THIS_DIR))
 from q3_optimize import (  # noqa
     OUT,
     device_info,
@@ -125,7 +127,7 @@ json.dump(
     indent=2,
 )
 path = write_result1_xlsx(info, per, total, OUT / "result1.xlsx")
-print("saved", path)
+print("saved", Path(path).resolve().relative_to(THIS_DIR.parent.resolve()).as_posix())
 
 # verify excel
 from openpyxl import load_workbook
@@ -136,6 +138,6 @@ for label, pth in [
 ]:
     wb = load_workbook(pth)
     ws = wb.active
-    print(label, pth)
+    print(label, Path(pth).resolve().relative_to(THIS_DIR.parent.resolve()).as_posix())
     for r in range(1, 6):
         print(" ", [ws.cell(r, c).value for c in range(1, 11)])

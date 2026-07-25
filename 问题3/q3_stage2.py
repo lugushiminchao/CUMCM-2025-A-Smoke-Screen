@@ -19,6 +19,11 @@ from q3_optimize import (
     write_result1_xlsx,
 )
 
+ROOT = Path(__file__).resolve().parent
+def display_path(path):
+    return Path(path).resolve().relative_to(ROOT.parent.resolve()).as_posix()
+
+
 
 def structured_time_candidates(n_each=2000, rng=None):
     """围绕 Q2 窗口 [~2.5, ~7.2] 构造“接力”时间轴候选。"""
@@ -207,8 +212,8 @@ def main():
         )
 
     xlsx = write_result1_xlsx(info, per, total, OUT / "result1.xlsx")
-    print("saved", txt)
-    print("excel", xlsx)
+    print("saved", display_path(txt))
+    print("excel", display_path(xlsx))
     print(f"elapsed {elapsed:.1f}s")
 
 

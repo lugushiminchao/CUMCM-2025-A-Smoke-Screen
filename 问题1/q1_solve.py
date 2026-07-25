@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
 """2025 CUMCM A题 问题1：给定策略下有效遮蔽时长计算"""
 import math
+from pathlib import Path
+
 import numpy as np
 
-OUT = r"C:\数模\2025国赛A题\q1_calc.txt"
+REPO_ROOT = Path(__file__).resolve().parent.parent
+OUT = REPO_ROOT / "q1_calc.txt"
 
 
 def log(fp, *a):

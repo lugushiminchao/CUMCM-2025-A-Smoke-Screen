@@ -43,6 +43,6 @@ heading=179.636355 deg  v=140.000000
  bomb1: drop=0.0000 tau=3.7189 det=3.7189 P_det=[1.727937e+04 3.304000e+00 1.732233e+03]
  bomb2: drop=3.2131 tau=5.0701 det=8.2832 P_det=[1.6640369e+04 7.3600000e+00 1.6740400e+03]
  bomb3: drop=5.3101 tau=5.9435 det=11.2536 P_det=[1.6224524e+04 9.9990000e+00 1.6269040e+03]
-saved C:\数模\2025国赛A题\问题3\结果\q3_result.txt
-excel C:\数模\2025国赛A题\问题3\结果\result1.xlsx
+saved 问题3/结果/q3_result.txt
+excel 问题3/结果/result1.xlsx
 elapsed 153.0s

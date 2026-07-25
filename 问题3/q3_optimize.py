@@ -35,6 +35,10 @@ except Exception:
 
 ROOT = Path(__file__).resolve().parent
 OUT = ROOT / "结果"
+
+def display_path(path):
+    return Path(path).resolve().relative_to(ROOT.parent.resolve()).as_posix()
+
 OUT.mkdir(exist_ok=True)
 ATTACH = ROOT.parent / "附件"
 
@@ -591,8 +595,8 @@ def main():
         )
 
     xlsx_path = write_result1_xlsx(info, per, total, OUT / "result1.xlsx")
-    print(f"\n结果: {txt}")
-    print(f"Excel: {xlsx_path}")
+    print(f"\n结果: {display_path(txt)}")
+    print(f"Excel: {display_path(xlsx_path)}")
     print(f"总耗时 {elapsed:.1f}s")
 
 

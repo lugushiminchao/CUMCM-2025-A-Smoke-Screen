@@ -2,12 +2,14 @@
 """高精度并集时长：时间掩码 + 边界二分，消除网格噪声。"""
 from __future__ import annotations
 
+from pathlib import Path
 import json
 import sys
 
 import numpy as np
 
-sys.path.insert(0, r"C:\数模\2025国赛A题\问题3")
+THIS_DIR = Path(__file__).resolve().parent
+sys.path.insert(0, str(THIS_DIR))
 from q3_optimize import (  # noqa
     FY0,
     G,
@@ -240,7 +242,7 @@ def main():
         indent=2,
     )
     path = write_result1_xlsx(info, per, total, OUT / "result1.xlsx")
-    print("saved", path)
+    print("saved", Path(path).resolve().relative_to(THIS_DIR.parent.resolve()).as_posix())
 
     # Q2 check refined
     xq2 = np.array([3.0880757565, 71.8890217683, 0.0, 2.5032397513, 50, 1, 52, 1])

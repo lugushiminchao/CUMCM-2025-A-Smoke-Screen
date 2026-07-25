@@ -1,8 +1,9 @@
 function q2_optimize_serial()
 %Q2_OPTIMIZE_SERIAL  问题2：MATLAB 串行优化（不启动并行池）
 % 决策变量 x = [theta, v, t_drop, tau]
-% 用法:
-%   matlab -batch "cd('C:/数模/2025国赛A题/问题2'); q2_optimize_serial"
+% 用法（在问题2目录，或从仓库根目录用 -sd 指定本目录）:
+%   matlab -batch "q2_optimize_serial"
+%   matlab -sd ".\问题2" -batch "q2_optimize_serial"
 
 tAll = tic;
 thisDir = fileparts(mfilename('fullpath'));

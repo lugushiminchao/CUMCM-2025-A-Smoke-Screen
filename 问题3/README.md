@@ -29,15 +29,15 @@
 
 ## 运行环境
 
-临时 Python 3.10 + PyTorch CUDA：
+Python 3.10 + PyTorch CUDA（建议在仓库根目录执行）：
 
 ```text
-C:\数模\env\Python310\python.exe
+python / py -3.10
 torch 2.5.1+cu121  /  RTX 2080 Ti
 ```
 
 ```bat
-C:\数模\env\Python310\python.exe C:\数模\2025国赛A题\问题3\q3_optimize.py
+python -u ".\问题3\q3_optimize.py"
 ```
 
 ## 模型要点

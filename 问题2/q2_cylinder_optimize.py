@@ -26,6 +26,10 @@ from common.smoke_geom import (  # noqa: E402
 )
 
 OUT = ROOT / "结果"
+
+def display_path(path):
+    return Path(path).resolve().relative_to(ROOT.parent.resolve()).as_posix()
+
 OUT.mkdir(exist_ok=True)
 
 MODE = "cylinder"
@@ -291,7 +295,7 @@ def main():
         f.write(f"总运行时间 = {elapsed:.2f} s\n")
         f.write(f"device = {device_info()}\n")
 
-    print(f"总耗时 {elapsed:.1f}s  结果: {OUT / 'q2_cylinder_result.txt'}")
+    print(f"总耗时 {elapsed:.1f}s  结果: {display_path(OUT / 'q2_cylinder_result.txt')}")
 
 
 if __name__ == "__main__":

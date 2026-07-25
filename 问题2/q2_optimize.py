@@ -10,6 +10,10 @@ import numpy as np
 
 ROOT = Path(__file__).resolve().parent
 OUT = ROOT / "结果"
+
+def display_path(path):
+    return Path(path).resolve().relative_to(ROOT.parent.resolve()).as_posix()
+
 OUT.mkdir(exist_ok=True)
 
 G = 9.8
@@ -341,7 +345,7 @@ def main():
     with open(OUT / "q2_result.json", "w", encoding="utf-8") as f:
         json.dump(meta, f, ensure_ascii=False, indent=2)
 
-    print(f"\n结果已写入: {txt}")
+    print(f"\n结果已写入: {display_path(txt)}")
     print(f"总耗时 {elapsed:.1f}s")
 
 

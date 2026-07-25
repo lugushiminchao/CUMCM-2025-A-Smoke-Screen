@@ -27,6 +27,10 @@ from common.smoke_geom import (  # noqa: E402
 )
 
 OUT = ROOT / "结果"
+
+def display_path(path):
+    return Path(path).resolve().relative_to(ROOT.parent.resolve()).as_posix()
+
 OUT.mkdir(exist_ok=True)
 
 
@@ -155,7 +159,7 @@ def main():
         json.dump(conv(results), f, ensure_ascii=False, indent=2)
 
     print(f"\n推荐 Q1 圆柱时长 = {rec:.6f} s")
-    print(f"已写入 {txt}")
+    print(f"已写入 {display_path(txt)}")
     print(f"总耗时 {elapsed:.2f}s")
 
 

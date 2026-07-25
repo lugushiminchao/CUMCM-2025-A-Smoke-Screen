@@ -41,6 +41,10 @@ from common.smoke_geom import (  # noqa: E402
 
 MODE = "point"
 OUT_ROOT = ROOT / "点模型对比"
+
+def display_path(path):
+    return Path(path).resolve().relative_to(ROOT.resolve()).as_posix()
+
 OUT_ROOT.mkdir(exist_ok=True)
 
 UAV_NAMES = ["FY1", "FY2", "FY3", "FY4", "FY5"]
@@ -916,7 +920,7 @@ def main():
         json.dump(conv(results["Q5"]), f, ensure_ascii=False, indent=2)
 
     write_comparison(results)
-    print(f"全部结果目录: {OUT_ROOT}")
+    print(f"全部结果目录: {display_path(OUT_ROOT)}")
 
 
 if __name__ == "__main__":
