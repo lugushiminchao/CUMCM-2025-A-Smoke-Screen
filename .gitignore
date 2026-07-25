@@ -28,6 +28,12 @@ Desktop.ini
 *.log
 _tmp_*.py
 _tmp_*.ps1
+_fix_*.py
+_fix_*.ps1
+_audit_*.py
+_cmp_*.py
+_verify_*.py
+_compact_*.py
 _install_git_gh.ps1
 _publish_*.ps1
 _publish_*.bat
