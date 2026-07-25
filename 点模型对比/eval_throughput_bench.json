@@ -1,0 +1,11 @@
+{
+  "n_samples": 800,
+  "n_time": 3000,
+  "point_s": 0.014005700000097931,
+  "cylinder_fast_s": 0.26061460000005354,
+  "cylinder_opt_s": 1.304840600000034,
+  "speedup_vs_fast": 18.607752557760858,
+  "speedup_vs_opt": 93.16496854787053,
+  "pts_fast": 68,
+  "pts_opt": 173
+}

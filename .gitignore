@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+env/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Jupyter / IDE
+.ipynb_checkpoints/
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Logs / temp scrape helpers
+*.log
+_tmp_*.py
+_tmp_*.ps1
+_install_git_gh.ps1
+_publish_*.ps1
+_publish_*.bat
+
+# Large local caches (keep result json/txt/xlsx)
+*.npy
+*.npz
+*.pt
+*.pth
+*.pkl
+*.mat~
+~$*
+
+# Optional: uncomment if PDFs should stay private
+# A题.pdf

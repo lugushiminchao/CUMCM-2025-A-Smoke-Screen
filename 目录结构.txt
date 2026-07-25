@@ -1,0 +1,41 @@
+2025国赛A题 目录结构
+====================
+
+2025国赛A题/
+  A题.pdf                 官方题目 PDF
+  附件/                   result1/2/3.xlsx 模板
+  目录结构.txt
+  问题1/
+    A题_text.txt          题目文本
+    q1_matlab.m           问题1 主程序（MATLAB）
+    q1_matlab_bench.m     计时对比
+    q1_*.py               Python 对照实现
+    结果/
+      q1_result.txt       问题1 数值结果（≈1.4055 s）
+      q1_calc.txt
+  问题2/
+    q2_optimize.py        【推荐】问题2 主求解（NumPy 粗搜+爬山）
+    q2_optimize.m         MATLAB 版优化（逻辑同构；本机 -batch 退出时可能 AV）
+    q2_quick_check.m      库函数/Q1 基准自检
+    q2_verify_best.m      对最优解 MATLAB 复核
+    q2_smoke.m            冒烟测试
+    lib/
+      scenario_params.m
+      los_dist_batch.m
+      shield_duration.m
+      strategy_kinematics.m
+      objective_q2.m
+    结果/
+      q2_result.txt       最优策略与时长
+      q2_result.csv
+      q2_result.json
+
+运行:
+  python C:/数模/2025国赛A题/问题2/q2_optimize.py
+  matlab -batch "cd('C:/数模/2025国赛A题/问题2'); q2_quick_check"
+
+问题2 决策变量: [航向角 theta, 速度 v, 投放时刻 t_drop, 引信延时 tau]
+判据: 云团中心到导弹-真目标中心视线段距离 ≤ 10 m（与问题1一致）
+加速策略: 向量化时间网格；外层大量评估用 CPU 粗搜（本机 MATLAB batch
+  在进程退出时偶发 Access Violation，长任务优先用 Python；库函数已用
+  q2_quick_check 与 Q1 对齐验证）。GPU 对单次 ~1e4–1e5 点扫描收益有限。
